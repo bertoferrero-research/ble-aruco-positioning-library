@@ -1,0 +1,11 @@
+{
+    "size": [2.02, 28.7],
+    "offline_grid": {
+        "resolution": 0.5,
+        "x_min" : 0.5,
+        "x_max": 1.5,
+        "y_min": 0.5,
+        "y_max": 28.5,
+        "z": 1.5
+    }
+}
