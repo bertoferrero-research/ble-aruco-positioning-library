@@ -1,0 +1,50 @@
+[
+    {
+        "id": 30,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "A2 marker on the metallic emergency exit door",
+        "position": {
+            "x": 0.734,
+            "y": -0.13,
+            "z": 1.58
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 180
+        }
+    },
+    {
+        "id": 2,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "A3 marker on the metallic emergency exit door",
+        "position": {
+            "x": 0.785,
+            "y": -0.13,
+            "z": 1.181
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 180
+        }
+    },
+    {
+        "id": 31,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "A4 marker on the metallic emergency exit door",
+        "position": {
+            "x": 0.529,
+            "y": -0.13,
+            "z": 1.212
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 180
+        }
+    }
+]
