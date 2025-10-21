@@ -3,7 +3,7 @@
         "id": 30,
         "size": 0.385,
         "max_distance": 25,
-        "comment": "A2 marker on the metallic emergency exit door",
+        "comment": "POS1 - A2 marker on the metallic emergency exit door",
         "position": {
             "x": 0.734,
             "y": -0.13,
@@ -19,7 +19,7 @@
         "id": 2,
         "size": 0.273,
         "max_distance": 20,
-        "comment": "A3 marker on the metallic emergency exit door",
+        "comment": "POS1 - A3 marker on the metallic emergency exit door",
         "position": {
             "x": 0.785,
             "y": -0.13,
@@ -32,19 +32,497 @@
         }
     },
     {
-        "id": 31,
+        "id": 21,
         "size": 0.173,
         "max_distance": 10,
-        "comment": "A4 marker on the metallic emergency exit door",
+        "comment": "POS1 - A4 marker on the metallic emergency exit door",
         "position": {
-            "x": 0.529,
+            "x": 0.53,
             "y": -0.13,
-            "z": 1.212
+            "z": 1.204
         },
         "rotation": {
             "roll": 90,
             "pitch": 0,
             "yaw": 180
+        }
+    },
+
+
+
+    {
+        "id": 37,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS2 - A2 marker on the firewall metallic door",
+        "position": {
+            "x": 2.016,
+            "y": 23.77,
+            "z": 1.116
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 4,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS2 - A3 marker on the firewall metallic door",
+        "position": {
+            "x": 2.016,
+            "y": 23.30,
+            "z": 1.178
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 22,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS2 - A4 marker on the firewall metallic door",
+        "position": {
+            "x": 2.016,
+            "y": 23.776,
+            "z": 1.529
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+
+    {
+        "id": 38,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS4 - A2 marker",
+        "position": {
+            "x": 2.021,
+            "y": 19.164,
+            "z": 1.467
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 8,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS4 - A3 marker",
+        "position": {
+            "x": 2.021,
+            "y": 18.808,
+            "z": 1.532
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 29,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS4 - A4 marker",
+        "position": {
+            "x": 2.021,
+            "y": 18.844,
+            "z": 1.154
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    
+    {
+        "id": 36,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS6 - A2 marker",
+        "position": {
+            "x": 2.024,
+            "y": 14.42,
+            "z": 1.451
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 18,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS6 - A3 marker",
+        "position": {
+            "x": 2.024,
+            "y": 14.063,
+            "z": 1.517
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 20,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS6 - A4 marker",
+        "position": {
+            "x": 2.024,
+            "y": 14.098,
+            "z": 1.143
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    
+    {
+        "id": 39,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS8 - A2 marker",
+        "position": {
+            "x": 2.018,
+            "y": 10.301,
+            "z": 1.478
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 16,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS8 - A3 marker",
+        "position": {
+            "x": 2.018,
+            "y": 9.945,
+            "z": 1.546
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 17,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS8 - A4 marker",
+        "position": {
+            "x": 2.018,
+            "y": 9.985,
+            "z": 1.172
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    
+    {
+        "id": 33,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS10 - A2 marker",
+        "position": {
+            "x": 2.018,
+            "y": 5.383,
+            "z": 1.415
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 0,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS10 - A3 marker",
+        "position": {
+            "x": 2.018,
+            "y": 5.018,
+            "z": 1.479
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+    {
+        "id": 25,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS10 - A4 marker",
+        "position": {
+            "x": 2.018,
+            "y": 5.062,
+            "z": 1.103
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": -90
+        }
+    },
+
+
+
+    {
+        "id": 6,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS3 - A3 marker",
+        "position": {
+            "x": 0,
+            "y": 23.349,
+            "z": 1.184
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 23,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS3 - A4 marker",
+        "position": {
+            "x": 0,
+            "y": 23.607,
+            "z": 1.1236
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    
+    {
+        "id": 32,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS5 - A2 marker",
+        "position": {
+            "x": 0.01,
+            "y": 17.387,
+            "z": 1.678
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 5,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS5 - A3 marker",
+        "position": {
+            "x": 0.01,
+            "y": 17.24,
+            "z": 1.254
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 1,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS5 - A4 marker",
+        "position": {
+            "x": 0.01,
+            "y": 17.502,
+            "z": 1.305
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    
+    {
+        "id": 31,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS7 - A2 marker",
+        "position": {
+            "x": 0.01,
+            "y": 14.673,
+            "z": 1.686
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 3,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS7 - A3 marker",
+        "position": {
+            "x": 0.01,
+            "y": 14.535,
+            "z": 1.267
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 24,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS7 - A4 marker",
+        "position": {
+            "x": 0.01,
+            "y": 14.798,
+            "z": 1.318
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    
+    {
+        "id": 35,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS9 - A2 marker",
+        "position": {
+            "x": 0,
+            "y": 9.846,
+            "z": 1.447
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 12,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS9 - A3 marker",
+        "position": {
+            "x": 0,
+            "y": 10.203,
+            "z": 1.517
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 26,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS9 - A4 marker",
+        "position": {
+            "x": 0,
+            "y": 10.165,
+            "z": 1.143
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    
+    {
+        "id": 34,
+        "size": 0.385,
+        "max_distance": 25,
+        "comment": "POS11 - A2 marker",
+        "position": {
+            "x": 0,
+            "y": 6.351,
+            "z": 1.453
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 14,
+        "size": 0.273,
+        "max_distance": 20,
+        "comment": "POS11 - A3 marker",
+        "position": {
+            "x": 0,
+            "y": 6.719,
+            "z": 1.527
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
+        }
+    },
+    {
+        "id": 28,
+        "size": 0.173,
+        "max_distance": 10,
+        "comment": "POS11 - A4 marker",
+        "position": {
+            "x": 0,
+            "y": 6.679,
+            "z": 1.148
+        },
+        "rotation": {
+            "roll": 90,
+            "pitch": 0,
+            "yaw": 90
         }
     }
 ]
