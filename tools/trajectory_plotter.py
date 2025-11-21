@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 
 
 
-def process_trajectory(csv_file:str, room_settings_file:str):
+def process_trajectory(csv_file:str, room_settings_file:str, enumerate_points:bool = False):
     
     if not os.path.exists(csv_file):
         print(f"Error: File '{csv_file}' does not exist.")
@@ -55,6 +55,13 @@ def process_trajectory(csv_file:str, room_settings_file:str):
 
     # Plot the trajectory as a line
     ax.plot(x_coords, y_coords, marker='o', linestyle='-', color='blue', label='Trajectory')
+
+    # Enumerate points if requested
+    if enumerate_points:
+        for i, (x, y) in enumerate(zip(x_coords, y_coords)):
+            ax.annotate(str(i), (x, y), textcoords="offset points", xytext=(5,5), 
+                       ha='left', fontsize=8, color='darkblue', 
+                       bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.5))
 
     # Plot the room shape using settings from file
     room_x = [0, room_width, room_width, 0, 0]
@@ -100,6 +107,11 @@ def main():
         help='Path to the room settings file (json file with room configuration)',
         required=True
     )
+    parser.add_argument(
+        '--enumerate_points',
+        action='store_true',
+        help='Enumerate trajectory points with numbers (optional)'
+    )
     print("Parsing arguments...")
     args = parser.parse_args()
     print("Arguments parsed successfully.")
@@ -108,7 +120,7 @@ def main():
     csv_file = common_tools.clean_path(args.csv_file.strip())
     room_settings_file = common_tools.clean_path(args.room_settings_file.strip())
 
-    process_trajectory(csv_file, room_settings_file)
+    process_trajectory(csv_file, room_settings_file, args.enumerate_points)
 
 
 if __name__ == "__main__":
