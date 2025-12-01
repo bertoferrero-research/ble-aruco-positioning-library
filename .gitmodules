@@ -1,0 +1,3 @@
+[submodule "location 2 - tut corridor/fingerprint/online/trajectories/take1/raw"]
+	path = location 2 - tut corridor/fingerprint/online/trajectories/take1/raw
+	url = https://github.com/bertoferrero-research/aruco-testing-library-trajectory-take1.git
