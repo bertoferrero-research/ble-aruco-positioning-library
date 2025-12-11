@@ -33,7 +33,7 @@ fingerprint/
 
 ## Beacon Configuration
 
-The dataset includes measurements from **5 BLE beacons** strategically positioned throughout the corridor:
+The dataset includes measurements from **5 BLE beacons** strategically positioned throughout the corridor. Additionally, the **online dataset (especially Take 2) incorporates an expanded set of ArUco markers** for improved visual ground truth positioning.
 
 | Beacon ID | MAC Address        | Name        | Position (x, y, z) |
 |-----------|-------------------|-------------|-------------------|
@@ -67,8 +67,9 @@ Measurements collected using ArUco markers for ground truth positioning, includi
 
 **Key Features**:
 - **Static measurements**: 20 positions with dual ground truth (laser + ArUco)
-- **Dynamic trajectories**: 6 paths (T1, T2, T3, T4, T6, T8)
-- **Two variants per type**: with environmental noise and without noise
+- **Dynamic trajectories - Two versions**:
+  - **Take 1** (Original): 6 paths 
+  - **Take 2** (Enhanced): 8 paths with expanded ArUco marker set
 - ArUco marker-based positioning validation
 - Chest-mounted collection for realistic movement
 - Continuous RSSI during natural walking speed
@@ -290,9 +291,20 @@ For questions, issues, or additional information about this dataset:
 
 ## Version History
 
-- **v2.0** (2025-11-21): Online dataset added
+- **v2.1** (2025-12-05): Take 2 Enhanced Online Dataset
+  - 10 trajectories with expanded ArUco marker coverage
+  - New T6 variants for rotational movement analysis:
+    - T6-1, T6-2: Turning while advancing (combined translation + rotation)
+    - T6-3: Static rotation only (360° spin in place)
+    - T6-4: Static rotation then advance (two-phase motion)
+  - Extended ArUco marker set for improved detection throughout corridor
+  - CSV-to-JSON marker definition conversion tool
+  - Improved position detection consistency vs Take 1
+  
+- **v2.0** (2025-11-21): Online dataset added (Take 1)
   - Static measurements: 20 positions with dual ground truth (laser + ArUco)
   - Dynamic trajectories: 6 paths (T1, T2, T3, T4, T6, T8)
+  - 5 baseline ArUco markers
   - Both variants: with environmental noise and without noise
   - ArUco-based positioning system
   - Trajectory processing and visualization tools
@@ -309,7 +321,11 @@ This dataset is released under [specify license, e.g., CC BY 4.0, MIT, etc.].
 
 ---
 
-**Last Updated**: October 7, 2025  
-**Dataset Version**: 1.0  
-**Total File Size**: [Approximate size]  
-**Collection Period**: [Start Date] - [End Date]
+**Last Updated**: December 5, 2025  
+**Dataset Version**: 2.1  
+**Collection Period**: October - November 2025  
+**Total Data**:
+  - Offline: ~5 GB
+  - Online Take 1: ~2.9 GB (git submodule)
+  - Online Take 2: ~2.5+ GB (git submodule)
+  - Total: ~10.4+ GB (excluding offline)
