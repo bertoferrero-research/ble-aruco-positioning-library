@@ -584,7 +584,7 @@
         "position_name": "POS22",
         "position": {
             "x": 2.03,
-            "y": 22.49,
+            "y": 22.36,
             "z": 1.16
         },
         "rotation": {
@@ -602,7 +602,7 @@
         "position_name": "POS22",
         "position": {
             "x": 2.03,
-            "y": 22.45,
+            "y": 22.32,
             "z": 1.54
         },
         "rotation": {
@@ -620,7 +620,7 @@
         "position_name": "POS23",
         "position": {
             "x": 0.0,
-            "y": 19.84,
+            "y": 19.71,
             "z": 1.62
         },
         "rotation": {
@@ -638,7 +638,7 @@
         "position_name": "POS23",
         "position": {
             "x": 0.0,
-            "y": 20.1,
+            "y": 19.97,
             "z": 1.56
         },
         "rotation": {
@@ -656,7 +656,7 @@
         "position_name": "POS24",
         "position": {
             "x": 2.02,
-            "y": 16.66,
+            "y": 16.53,
             "z": 1.6
         },
         "rotation": {
@@ -674,7 +674,7 @@
         "position_name": "POS24",
         "position": {
             "x": 2.02,
-            "y": 16.92,
+            "y": 16.79,
             "z": 1.54
         },
         "rotation": {
@@ -692,7 +692,7 @@
         "position_name": "POS25",
         "position": {
             "x": 0.0,
-            "y": 13.04,
+            "y": 12.91,
             "z": 1.6
         },
         "rotation": {
@@ -710,7 +710,7 @@
         "position_name": "POS25",
         "position": {
             "x": 0.0,
-            "y": 12.78,
+            "y": 12.65,
             "z": 1.54
         },
         "rotation": {
@@ -728,7 +728,7 @@
         "position_name": "POS26",
         "position": {
             "x": 2.02,
-            "y": 12.91,
+            "y": 12.78,
             "z": 1.548
         },
         "rotation": {
@@ -746,7 +746,7 @@
         "position_name": "POS26",
         "position": {
             "x": 2.02,
-            "y": 12.64,
+            "y": 12.51,
             "z": 1.514
         },
         "rotation": {
@@ -764,7 +764,7 @@
         "position_name": "POS27",
         "position": {
             "x": 0.0,
-            "y": 7.88,
+            "y": 7.75,
             "z": 1.562
         },
         "rotation": {
@@ -782,7 +782,7 @@
         "position_name": "POS27",
         "position": {
             "x": 0.0,
-            "y": 8.145,
+            "y": 8.015,
             "z": 1.5
         },
         "rotation": {
@@ -800,7 +800,7 @@
         "position_name": "POS28",
         "position": {
             "x": 2.015,
-            "y": 7.834,
+            "y": 7.704,
             "z": 1.175
         },
         "rotation": {
@@ -818,7 +818,7 @@
         "position_name": "POS28",
         "position": {
             "x": 2.015,
-            "y": 7.8,
+            "y": 7.67,
             "z": 1.557
         },
         "rotation": {
@@ -836,7 +836,7 @@
         "position_name": "POS29",
         "position": {
             "x": 0.0,
-            "y": 2.27,
+            "y": 2.14,
             "z": 1.232
         },
         "rotation": {
@@ -854,7 +854,7 @@
         "position_name": "POS29",
         "position": {
             "x": 0.0,
-            "y": 2.3,
+            "y": 2.17,
             "z": 1.61
         },
         "rotation": {
@@ -872,7 +872,7 @@
         "position_name": "POS30",
         "position": {
             "x": 2.02,
-            "y": 2.393,
+            "y": 2.263,
             "z": 1.243
         },
         "rotation": {
@@ -890,7 +890,7 @@
         "position_name": "POS30",
         "position": {
             "x": 2.02,
-            "y": 2.262,
+            "y": 2.132,
             "z": 1.632
         },
         "rotation": {
@@ -908,7 +908,7 @@
         "position_name": "POS31",
         "position": {
             "x": 0.0,
-            "y": 0.293,
+            "y": 0.163,
             "z": 1.164
         },
         "rotation": {
@@ -926,7 +926,7 @@
         "position_name": "POS31",
         "position": {
             "x": 0.0,
-            "y": 0.33,
+            "y": 0.2,
             "z": 1.563
         },
         "rotation": {
