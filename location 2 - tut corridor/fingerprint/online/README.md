@@ -6,11 +6,13 @@ This directory contains dynamic BLE RSSI fingerprint measurements collected duri
 
 **Collection Methods**: 
 - Static positioning with ArUco validation (20 positions)
-- Dynamic trajectory sampling (6 trajectories)
+- Dynamic trajectory sampling (two collection takes)
 
 **Ground Truth**: ArUco marker-based visual positioning  
 **Total Positions (Static)**: 20 measurement points  
-**Total Trajectories**: 6 paths (T1, T2, T3, T4, T6, T8)  
+**Total Trajectories**: 
+- Take 1: 6 trajectories (T1, T2, T3, T4, T6, T8) with 32 ArUco markers
+- Take 2: 8 trajectories (T1, T2, T3, T4, T6, T6-2, T6-3, T6-4) with 52 ArUco markers  
 **Equipment**: Android smartphone with chest-mounted harness  
 
 ## Directory Structure
@@ -31,21 +33,42 @@ online/
 │       ├── p01/                # Position 01 images and calculations
 │       └── ...                 # Positions 02-20
 └── trajectories/               # Dynamic trajectory data
-    ├── raw/                    # Original trajectory recordings
-    │   ├── T1/                 # Straight path along X=0 axis
-    │   ├── T2/                 # Straight path through center
-    │   ├── T3/                 # Straight path along X=2.02 axis
-    │   ├── T4/                 # Center path (reverse direction)
-    │   ├── T6/                 # Zigzag pattern
-    │   └── T8/                 # Random/complex path
-    └── processed/              # Processed and split data
-        ├── plots/              # Trajectory visualizations
-        ├── T1/                 # Processed T1 data (7 files)
-        ├── T2/                 # Processed T2 data
-        ├── T3/                 # Processed T3 data
-        ├── T4/                 # Processed T4 data
-        ├── T6/                 # Processed T6 data
-        └── T8/                 # Processed T8 data
+    ├── take1/                  # Original collection (November 2025)
+    │   ├── raw/                # Original trajectory recordings
+    │   │   ├── T1/             # Straight path along X=0 axis
+    │   │   ├── T2/             # Straight path through center
+    │   │   ├── T3/             # Straight path along X=2.02 axis
+    │   │   ├── T4/             # Center path (reverse direction)
+    │   │   ├── T6/             # Zigzag pattern
+    │   │   └── T8/             # Random/complex path
+    │   └── processed/          # Processed and split data
+    │       ├── plots/          # Trajectory visualizations
+    │       ├── T1/             # Processed T1 data (7 files)
+    │       ├── T2/             # Processed T2 data
+    │       ├── T3/             # Processed T3 data
+    │       ├── T4/             # Processed T4 data
+    │       ├── T6/             # Processed T6 data
+    │       └── T8/             # Processed T8 data
+    └── take2/                  # Enhanced collection (December 2025)
+        ├── raw/                # Original trajectory recordings
+        │   ├── T1/             # Straight path along X=0 axis
+        │   ├── T2/             # Straight path through center
+        │   ├── T3/             # Straight path along X=2.02 axis
+        │   ├── T4/             # Center path (reverse direction)
+        │   ├── T6/             # Zigzag with turning while advancing
+        │   ├── T6-2/           # Zigzag with combined translation + rotation
+        │   ├── T6-3/           # Static rotation then forward movement
+        │   └── T6-4/           # Static rotation then forward movement
+        └── processed/          # Processed and split data
+            ├── plots/          # Trajectory visualizations
+            ├── T1/             # Processed T1 data
+            ├── T2/             # Processed T2 data
+            ├── T3/             # Processed T3 data
+            ├── T4/             # Processed T4 data
+            ├── T6/             # Processed T6 data (T6-1)
+            ├── T62/            # Processed T6-2 data
+            ├── T63/            # Processed T6-3 data
+            └── T64/            # Processed T6-4 data
 ```
 
 ## Dataset Types
@@ -68,10 +91,23 @@ Static measurements at predefined positions using tripod mounting, similar to of
 
 ### Dynamic Trajectories (`trajectories/`)
 
-Continuous measurements collected while walking through corridor wearing chest-mounted smartphone.
+Continuous measurements collected while walking through corridor wearing chest-mounted smartphone. Collected in two takes with different ArUco marker configurations.
+
+**Take 1 (November 2025)**:
+- 6 trajectory patterns (T1, T2, T3, T4, T6, T8)
+- 32 ArUco markers distributed across 11 positions
+- Original collection for method validation
+
+**Take 2 (December 2025)**:
+- 8 trajectory patterns focusing on rotational movement
+- 52 ArUco markers distributed across 21 positions
+- Enhanced coverage for improved position detection
+- Removed T8 (random) in favor of structured T6 variants
+- Four T6 variants exploring rotation dynamics:
+  - T6 and T6-2: Turning while advancing (rotation during forward motion)
+  - T6-3 and T6-4: Stopping to rotate (stop at wall, rotate in place, then advance)
 
 **Key Features**:
-- 6 different trajectory patterns
 - Continuous RSSI collection during movement
 - ArUco marker detection every 250ms
 - Realistic walking scenarios at natural speed
@@ -80,12 +116,16 @@ Continuous measurements collected while walking through corridor wearing chest-m
 - Real-time localization algorithm testing
 - Tracking and motion prediction evaluation
 - Realistic pedestrian movement patterns
+- Analysis of rotational movement effects (Take 2)
 
 ## Trajectory Descriptions
+
+### Common Trajectories (Both Take 1 and Take 2)
 
 ### T1 - Straight Line (X=0 Axis)
 **Path**: Straight walk along the wall (X ≈ 0m)  
 **Direction**: South to North  
+**Available in**: Take 1, Take 2  
 **Characteristics**: 
 - Simple linear trajectory
 - Close to beacon positions on one side
@@ -94,6 +134,7 @@ Continuous measurements collected while walking through corridor wearing chest-m
 ### T2 - Straight Center
 **Path**: Straight walk through corridor center (X ≈ 1m)  
 **Direction**: South to North  
+**Available in**: Take 1, Take 2  
 **Characteristics**:
 - Balanced beacon visibility
 - Optimal signal distribution
@@ -102,6 +143,7 @@ Continuous measurements collected while walking through corridor wearing chest-m
 ### T3 - Straight Line (X=2.02 Axis)
 **Path**: Straight walk along opposite wall (X ≈ 2m)  
 **Direction**: South to North  
+**Available in**: Take 1, Take 2  
 **Characteristics**:
 - Mirror of T1
 - Different beacon proximity patterns
@@ -110,28 +152,71 @@ Continuous measurements collected while walking through corridor wearing chest-m
 ### T4 - Center Reverse
 **Path**: Straight walk through corridor center (X ≈ 1m)  
 **Direction**: North to South (reverse of T2)  
+**Available in**: Take 1, Take 2  
 **Characteristics**:
 - Same path as T2 but opposite direction
 - Tests directional dependencies
 - Different beacon encounter order
 
-### T6 - Zigzag Pattern
+### T6 - Zigzag Pattern (Turning While Advancing)
 **Path**: Lateral zigzag movements across corridor width  
 **Direction**: South to North with lateral movement  
+**Available in**: Take 1, Take 2
 **Characteristics**:
-- Complex motion pattern
+- Complex motion pattern with rotation during forward motion
 - Rapid X-coordinate changes
+- Subject turns while continuing to advance
 - Tests tracking during direction changes
 - Most challenging for tracking algorithms
 
-### T8 - Random/Complex Path
+### Take 1 Specific Trajectories
+
+### T8 - Random/Complex Path (Take 1)
 **Path**: Random walking pattern with various movements  
 **Direction**: Mixed with turns and stops  
+**Available in**: Take 1 only  
 **Characteristics**:
 - Natural unpredictable movement
 - Variable speed and direction
 - Most realistic pedestrian behavior
 - Includes pauses and direction changes
+
+### Take 2 Specific Trajectories
+
+### T6-2 - Zigzag Pattern Bis (Turning While Advancing) (Take 2)
+**Path**: Lateral zigzag movements across corridor width  
+**Direction**: South to North with lateral movement  
+**Available in**: Take 2
+**Characteristics**:
+- Complex motion pattern with rotation during forward motion
+- Similar to T6 but second collection run
+- Rapid X-coordinate changes
+- Subject turns while continuing to advance
+- Tests tracking during simultaneous translation and rotation
+
+### T6-3 - Zigzag Stopping to Rotate (Take 2)
+**Path**: Zigzag pattern where subject stops at wall to rotate before advancing  
+**Direction**: South to North with lateral movement, stopping at walls to rotate  
+**Available in**: Take 2 only  
+**Characteristics**:
+- Two-phase motion at each turn: stop, rotate in place, then advance
+- No rotation during forward movement (unlike T6 and T6-2)
+- Sequential motion phases (rotation and translation separated)
+- Tests algorithm handling of motion mode transitions
+- Clear separation between rotational and translational phases
+- Evaluates impact of stopping to reorient on tracking accuracy
+
+### T6-4 - Zigzag Stopping to Rotate Bis (Take 2)
+**Path**: Zigzag pattern where subject stops at wall to rotate before advancing  
+**Direction**: South to North with lateral movement, stopping at walls to rotate  
+**Available in**: Take 2 only  
+**Characteristics**:
+- Two-phase motion at each turn: stop, rotate in place, then advance
+- Similar to T6-3 but second collection run
+- No rotation during forward movement (unlike T6 and T6-2)
+- Sequential motion phases (rotation and translation separated)
+- Tests algorithm handling of motion mode transitions
+- Evaluates repeatability of stop-rotate-advance pattern
 
 ## Static Dataset Details
 
@@ -239,7 +324,7 @@ Contains ArUco marker images and position calculations:
 
 ### Trajectory File Naming
 
-**Raw trajectory files** (in `raw/TX/`):
+**Raw trajectory files** (in `take1/raw/TX/` or `take2/raw/TX/`):
 ```
 0.0_0.0_0.0__{MAC_ADDRESS}.csv
 0.0_0.0_0.0__all.csv
@@ -247,12 +332,20 @@ image_XXXX_TIMESTAMP.matphoto
 image_XXXX_TIMESTAMP_preview.jpg
 ```
 
-**Processed trajectory files** (in `processed/TX/`):
+**Processed trajectory files** (in `take1/processed/TX/` or `take2/processed/TX/`):
 ```
 {MAC_ADDRESS}.csv               # Individual beacon data
 all.csv                         # Combined beacon data
 all_processing_stats.csv        # Processing statistics
 ```
+
+**Note**: In Take 2 raw data, T6 variants are stored as:
+- `T6/` for T6-1 
+- `T6-2/` for T6-2 
+- `T6-3/` for T6-3 
+- `T6-4/` for T6-4 
+
+In Take 2 processed data, these become `T6/`, `T62/`, `T63/`, and `T64/` respectively.
 
 ### Trajectory File Format
 
@@ -350,11 +443,18 @@ python tools/rssi_dataset_checker.py \
 
 ### Trajectory Processing
 
-**Split by Beacon**:
+**Split by Beacon (Take 1 example)**:
 ```bash
 python tools/trajectory_split.py \
-    --csv_file "location 2 - tut corridor/fingerprint/online/trajectories/raw/T1/0.0_0.0_0.0__all.csv" \
-    --output_dir "location 2 - tut corridor/fingerprint/online/trajectories/processed/T1/"
+    --csv_file "location 2 - tut corridor/fingerprint/online/trajectories/take1/raw/T1/0.0_0.0_0.0__all.csv" \
+    --output_dir "location 2 - tut corridor/fingerprint/online/trajectories/take1/processed/T1/"
+```
+
+**Split by Beacon (Take 2 example)**:
+```bash
+python tools/trajectory_split.py \
+    --csv_file "location 2 - tut corridor/fingerprint/online/trajectories/take2/raw/T1/0.0_0.0_0.0__all.csv" \
+    --output_dir "location 2 - tut corridor/fingerprint/online/trajectories/take2/processed/T1/"
 ```
 
 **Batch Processing**:
@@ -362,10 +462,17 @@ python tools/trajectory_split.py \
 python tools/trajectory_split_all.py
 ```
 
-**Visualization**:
+**Visualization (Take 1)**:
 ```bash
 python tools/trajectory_plotter.py \
-    --csv_file "location 2 - tut corridor/fingerprint/online/trajectories/processed/T1/all.csv" \
+    --csv_file "location 2 - tut corridor/fingerprint/online/trajectories/take1/processed/T1/all.csv" \
+    --room_settings_file "location 2 - tut corridor/fingerprint/settings/room_settings.json"
+```
+
+**Visualization (Take 2)**:
+```bash
+python tools/trajectory_plotter.py \
+    --csv_file "location 2 - tut corridor/fingerprint/online/trajectories/take2/processed/T1/all.csv" \
     --room_settings_file "location 2 - tut corridor/fingerprint/settings/room_settings.json"
 ```
 
@@ -379,13 +486,24 @@ python tools/trajectory_plotter.py \
 - **Images per Position**: 6 (across 2 sessions)
 - **Total Images**: 120 per noise condition
 
-### Trajectory Dataset
+### Trajectory Dataset - Take 1
 - **Total Trajectories**: 6 (T1, T2, T3, T4, T6, T8)
+- **ArUco Markers**: 32 baseline markers
 - **Files per Trajectory (raw)**: Multiple (RSSI + images)
 - **Files per Trajectory (processed)**: 7 (5 beacons + combined + stats)
 - **Image Capture Rate**: 250ms (4 Hz)
 - **Typical Duration**: 1-3 minutes per trajectory
 - **RSSI Samples**: 500-1500 per trajectory
+
+### Trajectory Dataset - Take 2
+- **Total Trajectories**: 8 (T1, T2, T3, T4, T6, T6-2, T6-3, T6-4)
+- **ArUco Markers**: 52 markers across 21 positions
+- **Files per Trajectory (raw)**: Multiple (RSSI + images)
+- **Files per Trajectory (processed)**: 7 (5 beacons + combined + stats)
+- **Image Capture Rate**: 250ms (4 Hz)
+- **Typical Duration**: 1-3 minutes per trajectory
+- **RSSI Samples**: 500-1500 per trajectory
+- **Improved Detection**: Significantly higher position coverage compared to Take 1
 
 ## Known Issues and Limitations
 
@@ -409,7 +527,8 @@ python tools/trajectory_plotter.py \
 ### Trajectory Dataset
 
 **Position Coverage**:
-- Large gaps where no ArUco markers detected
+- **Take 1**: Large gaps where no ArUco markers detected (32 markers)
+- **Take 2**: Improved coverage with 52 markers
 - Position only available at marker locations
 - Interpolation needed for continuous tracking
 
@@ -419,9 +538,10 @@ python tools/trajectory_plotter.py \
 - Occasional direction uncertainties
 
 **Trajectory Complexity**:
-- T6 (zigzag) has most detection challenges
-- T8 (random) has irregular sampling
-- Simple trajectories (T1-T4) have better coverage
+- **Take 1**: T6 (zigzag) and T8 (random) have most detection challenges
+- **Take 2**: Better overall detection due to more markers
+- **Take 2**: T6-3 and T6-4 have deliberate stationary phases for rotation analysis
+- Simple trajectories (T1-T4) have better coverage in both takes
 
 ### General Limitations
 
@@ -456,15 +576,31 @@ python tools/trajectory_plotter.py \
 - Evaluate motion prediction models
 - Compare across different trajectory types
 
+**Take Selection**:
+- **Take 1**: Original dataset for baseline comparison, includes T8 random path
+- **Take 2**: Enhanced coverage with 52 markers for improved position accuracy
+- **Both Takes**: Common trajectories (T1-T4) for cross-validation and comparison
+
 **Trajectory Selection**:
-- **T1-T4**: Simple linear paths for basic testing
-- **T6**: Complex pattern for robustness testing  
-- **T8**: Realistic random movement for real-world simulation
+- **T1-T4**: Simple linear paths for basic testing (both takes)
+- **T6 (Take 1 & Take 2)**: Zigzag turning while advancing
+- **T6-2 (Take 2)**: Zigzag turning while advancing (repeat run)
+- **T6-3 (Take 2)**: Zigzag stopping to rotate - sequential motion phases
+- **T6-4 (Take 2)**: Zigzag stopping to rotate - sequential motion phases (repeat run)
+- **T8 (Take 1)**: Realistic random movement for real-world simulation
+
+**Rotational Movement Analysis (Take 2)**:
+- Compare T6/T6-2 (rotation during motion) vs T6-3/T6-4 (stop to rotate)
+- Study simultaneous translation+rotation (T6, T6-2) vs sequential phases (T6-3, T6-4)
+- Analyze impact of stopping to reorient on tracking accuracy
+- Evaluate motion mode transition handling in stop-rotate-advance patterns
+- Compare repeatability between first and second runs of each variant
 
 **Missing Position Handling**:
 - Implement interpolation for gaps
 - Use motion models between detections
 - Filter out zero-position records
+- **Take 2**: Fewer gaps due to increased marker density
 
 ## Related Files
 
@@ -478,18 +614,26 @@ python tools/trajectory_plotter.py \
 
 ### High Quality Sections
 - **Static positions**: Generally good ArUco detection
-- **T1-T4 trajectories**: Linear paths with consistent detection
+- **T1-T4 trajectories (both takes)**: Linear paths with consistent detection
+- **Take 2 trajectories**: Significantly improved marker coverage
 - **Center corridor**: Better beacon visibility
 
 ### Challenging Sections
-- **Trajectory gaps**: Areas without ArUco markers
-- **T6 zigzag**: Complex motion affects detection
-- **T8 random**: Unpredictable path reduces coverage
-- **Corridor ends**: Fewer marker opportunities
+- **Take 1 trajectory gaps**: Areas without ArUco markers (32 markers in 11 positions)
+- **Take 1 T6 zigzag**: Complex motion with rotation during advance affects detection
+- **Take 1 T8 random**: Unpredictable path reduces coverage
+- **Take 2**: Fewer gaps with 52 markers in 21 positions but still present between positions
+- **Corridor ends**: Fewer marker opportunities in both takes
+- **Take 2 T6-3, T6-4**: Stop-rotate-advance pattern may show different RSSI patterns during stationary rotation phases
 
 ---
 
-**Collection Period**: October-November 2025  
-**Dataset Version**: 2.0  
-**Last Updated**: November 21, 2025  
-**Total Raw Data Size**: ~2.9 GB (trajectories)
+**Collection Period**: 
+- Static dataset: October 2025
+- Take 1 trajectories: November 2025
+- Take 2 trajectories: December 2025  
+**Dataset Version**: 2.1  
+**Last Updated**: December 12, 2025  
+**Total Raw Data Size**: 
+- Take 1: ~2.9 GB (6 trajectories)
+- Take 2: ~2.5+ GB (8 trajectories)

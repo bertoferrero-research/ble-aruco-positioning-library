@@ -9,7 +9,9 @@ This directory contains Bluetooth Low Energy (BLE) beacon fingerprint data colle
 **Technology**: BLE RSSI fingerprinting  
 **Collection Methods**: 
 - Offline grid-based sampling (static measurements)
-- Online trajectory-based sampling (dynamic measurements)
+- Online trajectory-based sampling (dynamic measurements - two takes)
+  - Take 1: Original collection with baseline ArUco markers
+  - Take 2: Enhanced collection with expanded ArUco marker set
 
 ## Directory Structure
 
@@ -19,7 +21,10 @@ fingerprint/
 ├── settings/                  # Configuration files
 │   ├── room_settings.json     # Room dimensions and grid configuration
 │   ├── beacon_position.csv    # Beacon positions and identifiers
-│   └── mac_filter_list.json   # List of beacon MAC addresses
+│   ├── mac_filter_list.json   # List of beacon MAC addresses
+│   ├── aruco_markers.csv      # ArUco marker definitions (CSV format)
+│   ├── aruco_markers.json     # Baseline ArUco marker definitions (JSON format)
+│   └── aruco_markers_with_support.json  # Extended marker information
 ├── offline/                   # Static fingerprint data (grid-based)
 │   ├── README.md             # Detailed offline dataset documentation
 │   ├── with_noise/           # Data collected with environmental noise
@@ -27,13 +32,17 @@ fingerprint/
 └── online/                    # Dynamic trajectory data
     ├── README.md             # Detailed online dataset documentation
     └── trajectories/         # Trajectory-based measurements
-        ├── raw/              # Original trajectory data
-        └── processed/        # Split and processed trajectory data
+        ├── take1/            # Original collection (November 2025)
+        │   ├── raw/          # Original trajectory data (T1-T4, T6, T8)
+        │   └── processed/    # Split and processed trajectory data
+        └── take2/            # Enhanced collection (December 2025)
+            ├── raw/          # Original trajectory data (T1-T4, T6-1, T6-2, T6-3, T6-4)
+            └── processed/    # Split and processed trajectory data
 ```
 
 ## Beacon Configuration
 
-The dataset includes measurements from **5 BLE beacons** strategically positioned throughout the corridor. Additionally, the **online dataset (especially Take 2) incorporates an expanded set of ArUco markers** for improved visual ground truth positioning.
+The dataset includes measurements from **5 BLE beacons** strategically positioned throughout the corridor. Additionally, the **online dataset incorporates ArUco markers** for visual ground truth positioning, with Take 2 featuring an expanded marker set for improved coverage.
 
 | Beacon ID | MAC Address        | Name        | Position (x, y, z) |
 |-----------|-------------------|-------------|-------------------|
@@ -67,9 +76,16 @@ Measurements collected using ArUco markers for ground truth positioning, includi
 
 **Key Features**:
 - **Static measurements**: 20 positions with dual ground truth (laser + ArUco)
-- **Dynamic trajectories - Two versions**:
-  - **Take 1** (Original): 6 paths 
-  - **Take 2** (Enhanced): 8 paths with expanded ArUco marker set
+- **Dynamic trajectories - Two collection takes**:
+  - **Take 1** (Original - November 2025): 6 trajectories (T1, T2, T3, T4, T6, T8) with baseline ArUco markers
+  - **Take 2** (Enhanced - December 2025): 8 trajectories with support ArUco markers for improved detection coverage
+    - Same trajectories as Take 1: T1, T2, T3, T4
+    - Removed: T8 (random path)
+    - Enhanced T6 variants exploring rotational movement:
+      - T6 (T6-1): Zigzag with turning while advancing (rotation during forward motion)
+      - T6-2: Zigzag with turning while advancing (rotation during forward motion)
+      - T6-3: Zigzag stopping to rotate - stops at wall, rotates in place, then advances
+      - T6-4: Zigzag stopping to rotate - stops at wall, rotates in place, then advances
 - ArUco marker-based positioning validation
 - Chest-mounted collection for realistic movement
 - Continuous RSSI during natural walking speed
@@ -231,12 +247,20 @@ python tools/rssi_dataset_checker.py \
 - `trajectory_split.py`: Splits trajectory files by MAC address
 - `trajectory_split_all.py`: Batch processes all trajectories
 - `trajectory_plotter.py`: Visualizes trajectory paths with room layout
+- `csv_to_json_markers.py`: Converts ArUco marker definitions from CSV to JSON format
 
 **Example - Trajectory Visualization**:
 ```bash
 python tools/trajectory_plotter.py \
-    --csv_file "location 2 - tut corridor/fingerprint/online/trajectories/processed/T1/all.csv" \
+    --csv_file "location 2 - tut corridor/fingerprint/online/trajectories/take1/processed/T1/all.csv" \
     --room_settings_file "location 2 - tut corridor/fingerprint/settings/room_settings.json"
+```
+
+**Example - ArUco Marker CSV to JSON Conversion**:
+```bash
+python tools/csv_to_json_markers.py \
+    --input "location 2 - tut corridor/fingerprint/settings/aruco_markers.csv" \
+    --output "location 2 - tut corridor/fingerprint/settings/aruco_markers.json"
 ```
 
 ## Known Issues and Limitations
@@ -292,19 +316,24 @@ For questions, issues, or additional information about this dataset:
 ## Version History
 
 - **v2.1** (2025-12-05): Take 2 Enhanced Online Dataset
-  - 10 trajectories with expanded ArUco marker coverage
+  - 8 trajectories with expanded ArUco marker coverage
+  - Repeated trajectories from Take 1: T1, T2, T3, T4
+  - Removed T8 (random path) for more focused rotational analysis
   - New T6 variants for rotational movement analysis:
-    - T6-1, T6-2: Turning while advancing (combined translation + rotation)
-    - T6-3: Static rotation only (360° spin in place)
-    - T6-4: Static rotation then advance (two-phase motion)
-  - Extended ArUco marker set for improved detection throughout corridor
-  - CSV-to-JSON marker definition conversion tool
-  - Improved position detection consistency vs Take 1
+    - T6 (T6-1): Original zigzag with turning while advancing
+    - T6-2: Original zigzag with turning while advancing
+    - T6-3: Static rotation only (spin in place at wall)
+    - T6-4: Static rotation only (spin in place at wall)
+  - Extended ArUco marker set: 52 markers in 21 positions (vs 32 markers in 11 positions in Take 1)
+  - Marker sizes: A2 (0.385m), A3 (0.273m), A4 (0.173m) for multi-range detection
+  - CSV format for ArUco marker definitions (`aruco_markers.csv`)
+  - CSV-to-JSON marker definition conversion tool (`csv_to_json_markers.py`)
+  - Improved position detection consistency and coverage vs Take 1
   
 - **v2.0** (2025-11-21): Online dataset added (Take 1)
   - Static measurements: 20 positions with dual ground truth (laser + ArUco)
   - Dynamic trajectories: 6 paths (T1, T2, T3, T4, T6, T8)
-  - 5 baseline ArUco markers
+  - 21 baseline ArUco markers
   - Both variants: with environmental noise and without noise
   - ArUco-based positioning system
   - Trajectory processing and visualization tools
@@ -321,11 +350,12 @@ This dataset is released under [specify license, e.g., CC BY 4.0, MIT, etc.].
 
 ---
 
-**Last Updated**: December 5, 2025  
+**Last Updated**: December 12, 2025  
 **Dataset Version**: 2.1  
-**Collection Period**: October - November 2025  
+**Collection Period**: October - December 2025  
 **Total Data**:
   - Offline: ~5 GB
   - Online Take 1: ~2.9 GB (git submodule)
   - Online Take 2: ~2.5+ GB (git submodule)
-  - Total: ~10.4+ GB (excluding offline)
+  - Total Online: ~5.4+ GB
+  - Total Dataset: ~10.4+ GB
