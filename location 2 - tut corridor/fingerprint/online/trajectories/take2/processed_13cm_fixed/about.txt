@@ -1,0 +1,1 @@
+Este fichero contiene los processed tras corregir los 13cm del eje y en los aruco de soporte.
