@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-RSSI Sample Cleaner Script
+Trajectory plotter
 
-This script reads all the csv files in the processing folder.
-It reads all nonspace files, for each one checks if there is secondary files with a number on its name 
-(e.g. 1.5_28.5_1.5__all.csv -> 1.5_28.5_1.5__all (1).csv)
-If there are secondary files, it merges them into the main file and deletes the secondary files.
-It saves the merged file in the same folder.
+This script reads a CSV file containing trajectory samples with x and y coordinates.
+It also reads a room settings file to get room dimensions.
+It plots the trajectory in a 2D plot, showing the room shape and the trajectory path.
+It can optionally enumerate the trajectory points.
 """
 
 import os

@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 """
-RSSI Sample Cleaner Script
+RSSI Sample Splitter
 
-This script reads all the csv files in the processing folder.
-It reads all nonspace files, for each one checks if there is secondary files with a number on its name 
-(e.g. 1.5_28.5_1.5__all.csv -> 1.5_28.5_1.5__all (1).csv)
-If there are secondary files, it merges them into the main file and deletes the secondary files.
-It saves the merged file in the same folder.
+This script reads a CSV file containing RSSI samples with various MAC addresses.
+It splits the samples into separate CSV files for each unique MAC address found in the data.
 """
 
 import os
@@ -63,8 +60,8 @@ def main():
     parser.add_argument(
         '--output_dir',
         type=str,
-        help='Path the directory where the splited csvs must be stored',
-        required=True
+        help='Path the directory where the splited csvs must be stored. If it is not defined, the resultant csvs will be put in the same directory as the input csv file.',
+        required=False
     )
     print("Parsing arguments...")
     args = parser.parse_args()
@@ -72,7 +69,7 @@ def main():
     
     # Get processing folder path and convert to absolute path
     csv_file = common_tools.clean_path(args.csv_file.strip())
-    output_dir = common_tools.clean_path(args.output_dir.strip())
+    output_dir = common_tools.clean_path(args.output_dir.strip()) if args.output_dir else os.path.dirname(csv_file)
 
     process_trajectory(csv_file, output_dir)
 
